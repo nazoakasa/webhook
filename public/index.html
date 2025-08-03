@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webhook 大量送信ツール</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Webhook 大量送信ツール</h1>
+        
+        <div class="section">
+            <h2>Discord Webhook設定</h2>
+            <div class="webhook-urls-section">
+                <label>Webhook URLs:</label>
+                <div id="webhookUrlsContainer">
+                    <div class="webhook-url-item">
+                        <input type="url" class="webhook-url-input" placeholder="Discord Webhook URL を入力">
+                        <button class="btn-remove" onclick="removeWebhookUrl(this)">❌</button>
+                    </div>
+                </div>
+                <button id="addWebhookUrl" class="btn btn-small">➕ Webhook URL追加</button>
+            </div>
+            <input type="text" id="username" placeholder="ユーザー名 (オプション)" class="input-field">
+            <input type="url" id="avatarUrl" placeholder="アバター画像URL (オプション)" class="input-field">
+        </div>
+
+        <div class="section">
+            <h2>メッセージ設定</h2>
+            <textarea id="message" placeholder="送信するメッセージを入力..." class="message-input"></textarea>
+            
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="addTimestamp"> タイムスタンプを追加
+                </label>
+                <label>
+                    <input type="checkbox" id="addCounter"> カウンター番号を追加
+                </label>
+                <label>
+                    <input type="checkbox" id="randomText"> ランダムテキストを追加
+                </label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>送信設定</h2>
+            <div class="input-group">
+                <label>送信回数:</label>
+                <input type="number" id="count" value="10" min="1" max="1000" class="number-input">
+            </div>
+            <div class="input-group">
+                <label>送信間隔 (ミリ秒):</label>
+                <input type="number" id="delay" value="1000" min="100" max="10000" class="number-input">
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button id="startBtn" class="btn btn-primary">🚀 送信開始</button>
+            <button id="stopBtn" class="btn btn-danger" disabled>⏹️ 停止</button>
+            <button id="testBtn" class="btn btn-secondary">🧪 テスト送信</button>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <div id="status" class="status">待機中...</div>
+            <div id="counter" class="counter">送信済み: 0 / 0</div>
+        </div>
+
+        <div class="log-section">
+            <h3>ログ</h3>
+            <div id="log" class="log"></div>
+            <button id="clearLog" class="btn btn-small">ログクリア</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
